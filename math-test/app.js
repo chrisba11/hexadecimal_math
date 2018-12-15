@@ -12,10 +12,10 @@ var redArray = [];
 var greenArray = [];
 var blueArray = [];
 
-// var userArray = [];
+var userArray = [];
 
-var colorOne = '#2348dd';
-var colorTwo = '#23efa4';
+var colorOne = '#ff0000';
+var colorTwo = '#551A8B';
 var increment = 20;
 
 
@@ -80,16 +80,68 @@ spacing();
 // add numbers to red, green, and blue arrays
 
 function rgbArrayPush() {
-  redArray.push(differenceArray[0]);
-  greenArray.push(differenceArray[1]);
-  blueArray.push(differenceArray[2]);
+  var redFirst = bothColors[0][0];
+  var greenFirst = bothColors[0][1];
+  var blueFirst = bothColors[0][2];
 
-  for (var i = 0; i < increment; i++) {
-    
+  var redLast = bothColors[1][0];
+  var greenLast = bothColors[1][1];
+  var blueLast = bothColors[1][2];
+
+  var redSpacing = incrementArray[0];
+  var greenSpacing = incrementArray[1];
+  var blueSpacing = incrementArray[2];
+
+  redArray.push(redFirst);
+  greenArray.push(greenFirst);
+  blueArray.push(blueFirst);
+
+  var nextRed = redFirst;
+  var nextGreen = greenFirst;
+  var nextBlue = blueFirst;
+
+  for (var i = 2; i < increment; i++) {
+    if(redFirst > redLast) {
+      nextRed = nextRed - redSpacing;
+    } else {
+      nextRed = nextRed + redSpacing;
+    }
+
+    if(greenFirst > greenLast) {
+      nextGreen = nextGreen - greenSpacing;
+    } else {
+      nextGreen = nextGreen + greenSpacing;
+    }
+
+    if(blueFirst > blueLast) {
+      nextBlue = nextBlue - blueSpacing;
+    } else {
+      nextBlue = nextBlue + blueSpacing;
+    }
+
+
+    redArray.push(nextRed);
+    greenArray.push(nextGreen);
+    blueArray.push(nextBlue);
   }
 
+  redArray.push(redLast);
+  greenArray.push(greenLast);
+  blueArray.push(blueLast);
 }
 
+rgbArrayPush();
+
+
+// generate user array
+
+function generateUserArray() {
+  for (var i = 0; i < increment; i++) {
+    userArray.push(`rgb(${redArray[i]},${greenArray[i]},${blueArray[i]})`);
+  }
+}
+
+generateUserArray();
 
 
 // function convertToHex(decimal) {
