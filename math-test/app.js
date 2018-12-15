@@ -79,26 +79,6 @@ function spacing() {
 spacing();
 
 // generate array of hex values - DOES NOT FUNCTION PROPERLY
-function generateUserArray() {
-  userArray.push(colorOne);
-
-  // var nextHex = colorOne;
-  // console.log('This is the nextHex:', nextHex);
-
-  var decimalNum = convertToDecimal(colorOne);
-  console.log('This is the decimalNum before increment:', decimalNum);
-
-  for (var i = 2; i < increment; i++) {
-    decimalNum += spacing();
-    var shifted = Math.floor( decimalNum / 256);
-    console.log('This is the decimalNum after increment:', shifted);
-
-    var hexNum = convertToHex(shifted);
-    console.log('This is the hexNum being pushed to array:', hexNum);
-    userArray.push(hexNum);
-  }
-  userArray.push(colorTwo);
-}
 
 generateUserArray();
 
